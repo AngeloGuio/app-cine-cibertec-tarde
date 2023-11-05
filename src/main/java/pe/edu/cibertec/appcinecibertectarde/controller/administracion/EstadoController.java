@@ -34,7 +34,7 @@ public class EstadoController {
 
     @GetMapping("/listar")
     @ResponseBody
-    public List<Estado> listarEstado(){
+    public List<Estado> listarEstados(){
         return estadoService.listarEstados();
     }
 
