@@ -11,7 +11,7 @@
         Lista de estados
     </div>
     <div class="card-body">
-        <button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nuevo</button>
+        <button type="button" class="btn btn-primary"><i class="bi bi-plus-circle"></i>Nuevo</button>
         <hr/>
         <table class="table">
             <thead>
@@ -24,13 +24,33 @@
             <tr th:each="estado: ${listaestados}">
                 <th class="table-primary" th:text="${estado.idestado}"></th>
                 <td class="table-primary" th:text="${estado.descestado}"></td>
-
             </tr>
-
-
             </tbody>
         </table>
-
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalregistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Mantenimiento Estado</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="txtdescestado" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="txtdescestado">
+                    <input type="hidden" value="0" id="hddiestado">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i>Cerrar</button>
+                <button id="btnguardar" type="button" class="btn btn-primary">
+                    <i class="bi bi-save2"></i>Guardar</button>
+            </div>
+        </div>
     </div>
 </div>
 </body>
