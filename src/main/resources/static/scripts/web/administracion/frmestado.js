@@ -12,7 +12,10 @@ $(document).on("click", ".btnactualizar", function(){
 });
 
 $(document).on("click", ".btneliminar", function(){
-    $("#modalregistro").modal("show");
+    $("#lblmensajeeliminar").text("¿Estas seguro de eliminar: "+
+        $(this).attr("data-descestado")+"?");
+    $("#hddideliminar").val($(this).attr("data-idestado"));
+    $("#modaleliminar").modal("show");
 });
 
 $(document).on("click", "#btnguardar", function(){
@@ -40,8 +43,26 @@ function listarEstados(){
     url: "/administracion/estado/listar",
     dataType: "json",
     success: function(resultado){
-           console.log(resultado);
-    }
+           //console.log(resultado);
+           $("#tblestado > tbody").html("");
+           $.each(resultado, function(index, value){
+                $("#tblestado > tbody").append("<tr>"+
+                    "<td>"+value.idestado+"</td>"+
+                    "<td>"+value.descestado+"</td>"+
+                    "<td>"+
+                    "<button type='button' class='btn btn-info btnactualizar'"+
+                    "data-idestado='"+value.idestado+"' "+
+                    "data-descestado='"+value.descestado+"'>"+
+                    "<i class='bi bi-pencil-square'></i></button>"+
+                    "</td>"+
+                    "<td>"+
+                    "<button type='button' class='btn btn-danger btneliminar'"+
+                    "data-idestado='"+value.idestado+"' "+
+                    "data-descestado='"+value.descestado+"'>"+
+                    "<i class='bi bi-trash-fill'></i></button>"+
+                    "</td>"+
+                    "</tr>");
+           });
+       }
     });
-
 }
