@@ -18,6 +18,26 @@ $(document).on("click", ".btneliminar", function(){
     $("#modaleliminar").modal("show");
 });
 
+$(document).on("click", "#btneliminar", function(){
+    $.ajax({
+    type: "DELETE",
+    contentType: "application/json",
+    url: "/administracion/estado/eliminar",
+    data: JSON.stringify({
+        idestado: $("#hddideliminar").val()
+    }),
+    success: function(resultado){
+    if(resultado.respuesta){
+        listarEstados();
+    }
+        alert(resultado.mensaje);
+        $("#modaleliminar").modal("hide");
+    }
+    })
+});
+
+
+
 $(document).on("click", "#btnguardar", function(){
     $.ajax({
     type: "POST",
